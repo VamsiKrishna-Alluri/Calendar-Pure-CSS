@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <title>Travel Booking Form</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="calcss.css">
+    <!-- <script type="text/javascript" src="simplifiedCal.js"></script> -->
+</head>
+<body onclick="specificFunction()">
+    
+<div class="booking-form-box">
+
+    <div class="booking-form">
+        <form id="MyForm" onsubmit="onclicking();return false">
+            <label>Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+
+            <label>Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+
+            <label>Gender</label>
+            <div class="radio-btn">
+                <span>
+                    <label>
+                        <input type="radio" class="btn" name="check" value="Male"> Male   
+                    </label>  
+                </span>
+                <span>
+                    <label>
+                        <input type="radio" class="btn" name="check" value="Female"> Female  
+                    </label>  
+                </span>
+                <span>
+                    <label>
+                        <input type="radio" class="btn" name="check" value="Others"> Prefer not to say   
+                    </label>  
+                </span>
+            </div>
+            <label>Mode of Transport</label>
+            <div class="check-box">
+                <span>
+                    <label>
+                        <input type="checkbox" name="train" id="train" value="Train"> Train   
+                    </label>  
+                </span>
+                <span>
+                    <label>
+                        <input type="checkbox" name="flight" id="flight" value="Flight"> Flight   
+                    </label>  
+                </span>
+                <span>
+                    <label>
+                        <input type="checkbox" name="bus" id="bus" value="Bus"> Bus   
+                    </label>  
+                </span>
+            </div>
+            <div class="input-grp">
+                <label>Departing</label>
+                <input type="date" class="form-control select-date" name="departing" id="departingdate" required="">
+            </div>
+
+            <div class="input-grp">
+                <label>Returning</label>
+                <input type="date" class="form-control select-date" name="returning" id="returningdate" required="">
+            </div>
+
+            <div class="input-grp">
+                <label>Adults</label>
+                <input type="number" class="form-control" value="0" name="adults" id="adults" required="">
+            </div>
+
+            <div class="input-grp">
+                <label>Children</label>
+                <input type="number" class="form-control" value="0" name="children" id="children" required="">
+            </div>
+            <div class="input-grp" style="width:300px;">
+                <input class="custom-select" id="travel" onkeydown="complete()" type="text" autocomplete="off" placeholder="Place" required="">
+            </div>
+            <br>
+            
+            <div class="input-grp">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+    </div>
+
+        <div class="card">
+        <div class="cal-header flex-container">
+            <button class="form-inline" id="previous" onclick="previousmonth()">
+                    Previous
+            </button>
+            <h3 id="idyear"onclick="yearchange()"></h3>
+            <h3 id="idmonth" onclick="monthchange()"></h3>
+            <button  class="form-inline" id="next" style="right: 0;padding: 0.3rem;" onclick="nextmonth()">
+                    Next
+            </button>
+        </div>
+        <table id="calendar" class="table">
+            <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+            </thead>
+            <tbody id="calendar-body">
+            </tbody>
+        </table>
+        <table id="yeartable" class="table">
+            <tbody id= "year-body">
+            </tbody>
+        </table>
+        <table id="monthtable" class="table">
+            <tbody id= "month-body" display="hidden">
+                <tr>
+                    <td onclick="">January</td>
+                    <td>February</td>
+                    <td>March</td>
+                    <td>April</td>
+                </tr>
+                <tr>
+                    <td>May</td>
+                    <td>June</td>
+                    <td>July</td>
+                    <td>August</td>
+                </tr>
+                <tr>
+                    <td>September</td>
+                    <td>October</td>
+                    <td>November</td>
+                    <td>December</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="popup">
+    <header>
+        <span>
+            <label id="Welcome">
+                Welcome
+            </label>
+        </span>
+    </header>
+    <a id="sendemail" href="mailto:someone@example.com?Subject=Hello%20again">Send Mail</a>
+    <p id="popuptext"></p>
+</div>
+<script src="caljs.js"></script>
+
+        
+</body>
+</html>
+
+<!-- <tbody id="month-body"><tr><td>Jan</td><td>Feb</td><td>Mar</td><td>Apr</td></tr><tr><td>May</td><td>Jun</td><td>Jul</td><td>Aug</td></tr><tr><td>Sep</td><td>Oct</td><td>Nov</td><td>Dec</td></tr></tbody>
+
+To be decided to be placed in it, static month table, since it has only one specific use., Each td has an event listener to months() method. //Best option.
+ -->
