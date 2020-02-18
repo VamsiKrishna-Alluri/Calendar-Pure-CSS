@@ -5,10 +5,10 @@
     <title>Travel Booking Form</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <script src="https://momentjs.com/downloads/moment.js"></script>
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="calcss.css">
     <!-- <script type="text/javascript" src="simplifiedCal.js"></script> -->
 </head>
@@ -92,12 +92,12 @@
 
         <div class="card">
         <div class="cal-header flex-container">
-            <button class="form-inline" id="previous" onclick="previousmonth()">
+            <button class="form-inline" id="previous" onclick="previous()">
                     Previous
             </button>
             <h3 id="idyear"onclick="yearchange()"></h3>
             <h3 id="idmonth" onclick="monthchange()"></h3>
-            <button  class="form-inline" id="next" style="right: 0;padding: 0.3rem;" onclick="nextmonth()">
+            <button  class="form-inline" id="next" style="right: 0;padding: 0.3rem;" onclick="next()">
                     Next
             </button>
         </div>
@@ -147,13 +147,11 @@
 <div id="popup">
     <header>
         <span>
-            <label id="Welcome">
-                Welcome
-            </label>
+            <label id="Welcome">Filled From JS</label>
         </span>
     </header>
-    <a id="sendemail" href="mailto:someone@example.com?Subject=Hello%20again">Send Mail</a>
-    <p id="popuptext"></p>
+    <a id="sendemail" href="">Send Mail</a>
+    <p id="popuptext">Filled From JS</p>
 </div>
 <script src="caljs.js"></script>
 

@@ -11,6 +11,7 @@ let departing;
 let returning;
 let year = document.getElementById("idyear");
 let month = document.getElementById("idmonth");
+let yearstart;
 //user details
 	let username;
 	let email;
@@ -35,14 +36,15 @@ function yearchange()
     document.getElementById("calendar").style.display='none'
     document.getElementById("monthtable").style.display='none'
     document.getElementById("yeartable").style.display='table'
-    years();
+    years(1990);
 }
 
-function years()
+function years(syear)
 {
+	yearstart = syear;
+	document.getElementById("year-body").style.visible = "visible"
 	document.getElementById("year-body").innerHTML = "" // Clearing the previous table
    let tbl = document.getElementById("year-body");
-   let syear = 1990;
    for(let i=0;i<6;i++)
    {
     	let row = document.createElement("tr");
@@ -67,7 +69,9 @@ function years()
 	            	var x = this;
 	            	document.getElementById('idyear').innerHTML=x.innerHTML;
 	            	tbl.innerHTML="";
-	            	showCalendar(0,this.innerHTML);
+	            	currentYear = x.innerHTML;
+	            	monthchange();
+	            	//showCalendar(0,x.innerHTML);
 	        }
 	    }
 	}
@@ -79,35 +83,45 @@ function years()
 function monthchange()
 {
     document.getElementById("calendar").style.display='none'
-    document.getElementById("yeartable").style.display = 'none'
+    document.getElementById("yeartable").style.visible = 'hidden'
     document.getElementById("monthtable").style.display='table'
     monthss();
 }
-function nextmonth()
+function next()
 {
-    console.log("in nextmonth before executing",currentMonth,currentYear);
-    // if (currentMonth===12){
-    // 	currentYear++;
-    // 	currentMonth=1;
-    // }
-    currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
-    currentMonth = (currentMonth === 11) ? 0 : currentMonth + 1;
-    // idyear = (idmonth === 11) ? idyear + 1 : idyear;
-    // idmonth = (idmonth) % 12;
-    console.log("in nextmonth"+currentMonth)
-    showCalendar(currentMonth, currentYear);
+	if (document.getElementById("yeartable").style.display!='none')//for next set of years.
+	{
+		years(yearstart+42);
+	}
+	else
+	{
+	    console.log("in nextmonth before executing",currentMonth,currentYear);
+	    // if (currentMonth===12){
+	    // 	currentYear++;
+	    // 	currentMonth=1;
+	    // }
+	    currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+	    currentMonth = (currentMonth === 11) ? 0 : currentMonth + 1;
+	    // idyear = (idmonth === 11) ? idyear + 1 : idyear;
+	    // idmonth = (idmonth) % 12;
+	    console.log("in nextmonth"+currentMonth)
+	    showCalendar(currentMonth, currentYear);
+	}
 }
 
-function previousmonth()
+function previous()
 {
-    currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
-    currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-    showCalendar(currentMonth, currentYear);
+	if (document.getElementById("yeartable").style.display!='none')//for next set of years.
+	{
+		years(yearstart-42);
+	}
+	else
+	{
+	    currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
+	    currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+	    showCalendar(currentMonth, currentYear);
+	}
 }
-// function previous() {
-	
-// }
-
 function onclicking()
 {
 	alert("onclicking");
